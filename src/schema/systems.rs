@@ -126,6 +126,15 @@ pub struct Coords {
     pub z: f64,
 }
 
+impl Coords {
+    pub fn distance(&self, other: &Coords) -> f64 {
+        let dx = other.x - self.x;
+        let dy = other.y - self.y;
+        let dz = other.z - self.z;
+        f64::sqrt((dx * dx) + (dy * dy) + (dz * dz))
+    }
+}
+
 #[derive(Default, Debug, Clone, PartialEq, Serialize, Deserialize)]
 #[serde(rename_all = "camelCase")]
 pub struct Information {

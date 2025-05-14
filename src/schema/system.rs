@@ -22,44 +22,44 @@ pub struct SystemInfoRequest {
 #[serde(rename_all = "camelCase")]
 pub struct BodiesResponse {
     pub id: i64,
-    pub id64: i64,
+    pub id64: Option<i64>,
     pub name: String,
     pub url: String,
-    pub body_count: i64,
-    pub bodies: Vec<Body>,
+    pub body_count: Option<i64>,
+    pub bodies: Option<Vec<Body>>,
 }
 
 #[derive(Default, Debug, Clone, PartialEq, Serialize, Deserialize)]
 #[serde(rename_all = "camelCase")]
 pub struct Body {
     pub id: i64,
-    pub id64: i64,
-    pub body_id: i64,
+    pub id64: Option<i64>,
+    pub body_id: Option<i64>,
     pub name: String,
-    pub discovery: Discovery,
+    pub discovery: Option<Discovery>,
     #[serde(rename = "type")]
-    pub type_field: String,
-    pub sub_type: String,
-    pub parents: Vec<Parent>,
-    pub distance_to_arrival: i64,
+    pub type_field: Option<String>,
+    pub sub_type: Option<String>,
+    pub parents: Option<Vec<Parent>>,
+    pub distance_to_arrival: Option<f64>,
     pub is_main_star: Option<bool>,
     pub is_scoopable: Option<bool>,
-    pub age: Option<i64>,
+    pub age: Option<f64>,
     pub spectral_class: Option<String>,
     pub luminosity: Option<String>,
     pub absolute_magnitude: Option<f64>,
     pub solar_masses: Option<f64>,
     pub solar_radius: Option<f64>,
-    pub surface_temperature: i64,
-    pub orbital_period: f64,
-    pub semi_major_axis: f64,
-    pub orbital_eccentricity: f64,
-    pub orbital_inclination: f64,
-    pub arg_of_periapsis: f64,
-    pub rotational_period: f64,
-    pub rotational_period_tidally_locked: bool,
+    pub surface_temperature: Option<i64>,
+    pub orbital_period: Option<f64>,
+    pub semi_major_axis: Option<f64>,
+    pub orbital_eccentricity: Option<f64>,
+    pub orbital_inclination: Option<f64>,
+    pub arg_of_periapsis: Option<f64>,
+    pub rotational_period: Option<f64>,
+    pub rotational_period_tidally_locked: Option<bool>,
     pub axial_tilt: Option<f64>,
-    pub update_time: String,
+    pub update_time: Option<String>,
     pub is_landable: Option<bool>,
     pub gravity: Option<f64>,
     pub earth_masses: Option<f64>,
@@ -71,7 +71,7 @@ pub struct Body {
     pub solid_composition: Option<SolidComposition>,
     pub terraforming_state: Option<String>,
     #[serde(default)]
-    pub rings: Vec<Ring>,
+    pub rings: Option<Vec<Ring>>,
     pub reserve_level: Option<String>,
     pub materials: Option<Materials>,
 }
@@ -104,7 +104,7 @@ pub struct AtmosphereComposition {
     #[serde(rename = "Neon")]
     pub neon: Option<f64>,
     #[serde(rename = "Methane")]
-    pub methane: Option<i64>,
+    pub methane: Option<f64>,
     #[serde(rename = "Carbon dioxide")]
     pub carbon_dioxide: Option<f64>,
     #[serde(rename = "Ammonia")]
@@ -114,9 +114,9 @@ pub struct AtmosphereComposition {
     #[serde(rename = "Silicates")]
     pub silicates: Option<f64>,
     #[serde(rename = "Oxygen")]
-    pub oxygen: Option<i64>,
+    pub oxygen: Option<f64>,
     #[serde(rename = "Nitrogen")]
-    pub nitrogen: Option<i64>,
+    pub nitrogen: Option<f64>,
     #[serde(rename = "Water")]
     pub water: Option<f64>,
 }
@@ -138,9 +138,9 @@ pub struct Ring {
     pub name: String,
     #[serde(rename = "type")]
     pub type_field: String,
-    pub mass: i64,
-    pub inner_radius: i64,
-    pub outer_radius: i64,
+    pub mass: Option<f64>,
+    pub inner_radius: Option<f64>,
+    pub outer_radius: Option<f64>,
 }
 
 #[derive(Default, Debug, Clone, PartialEq, Serialize, Deserialize)]
@@ -202,52 +202,52 @@ pub struct Materials {
 #[serde(rename_all = "camelCase")]
 pub struct EstimatedValueResponse {
     pub id: i64,
-    pub id64: i64,
+    pub id64: Option<i64>,
     pub name: String,
     pub url: String,
-    pub estimated_value: i64,
-    pub estimated_value_mapped: i64,
-    pub valuable_bodies: Vec<ValuableBody>,
+    pub estimated_value: f64,
+    pub estimated_value_mapped: f64,
+    pub valuable_bodies: Option<Vec<ValuableBody>>,
 }
 
 #[derive(Default, Debug, Clone, PartialEq, Serialize, Deserialize)]
 #[serde(rename_all = "camelCase")]
 pub struct ValuableBody {
-    pub body_id: i64,
+    pub body_id: Option<i64>,
     pub body_name: String,
-    pub distance: i64,
-    pub value_max: i64,
+    pub distance: f64,
+    pub value_max: f64,
 }
 
 #[derive(Default, Debug, Clone, PartialEq, Serialize, Deserialize)]
 #[serde(rename_all = "camelCase")]
 pub struct StationResponse {
     pub id: i64,
-    pub id64: i64,
+    pub id64: Option<i64>,
     pub name: String,
     pub url: String,
-    pub stations: Vec<Station>,
+    pub stations: Option<Vec<Station>>,
 }
 
 #[derive(Default, Debug, Clone, PartialEq, Serialize, Deserialize)]
 #[serde(rename_all = "camelCase")]
 pub struct Station {
     pub id: i64,
-    pub market_id: i64,
+    pub market_id: Option<i64>,
     #[serde(rename = "type")]
-    pub type_field: String,
+    pub type_field: Option<String>,
     pub name: String,
     pub body: Option<StationBody>,
-    pub distance_to_arrival: f64,
-    pub allegiance: String,
-    pub government: String,
-    pub economy: String,
+    pub distance_to_arrival: Option<f64>,
+    pub allegiance: Option<String>,
+    pub government: Option<String>,
+    pub economy: Option<String>,
     pub second_economy: Option<String>,
-    pub have_market: bool,
-    pub have_shipyard: bool,
-    pub have_outfitting: bool,
-    pub other_services: Vec<String>,
-    pub controlling_faction: ControllingFaction,
+    pub have_market: Option<bool>,
+    pub have_shipyard: Option<bool>,
+    pub have_outfitting: Option<bool>,
+    pub other_services: Option<Vec<String>>,
+    pub controlling_faction: Option<ControllingFaction>,
     pub update_time: UpdateTime,
 }
 
@@ -264,14 +264,14 @@ pub struct StationBody {
 #[serde(rename_all = "camelCase")]
 pub struct ControllingFaction {
     pub id: Option<i64>,
-    pub name: String,
+    pub name: Option<String>,
 }
 
 #[derive(Default, Debug, Clone, PartialEq, Serialize, Deserialize)]
 #[serde(rename_all = "camelCase")]
 pub struct UpdateTime {
-    pub information: String,
-    pub market: String,
+    pub information: Option<String>,
+    pub market: Option<String>,
     pub shipyard: Option<String>,
     pub outfitting: Option<String>,
 }

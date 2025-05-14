@@ -18,6 +18,8 @@ async fn do_api_call(url: &str, request: String) -> Result<Value> {
         .send()
         .await?;
 
+    // println!("{:?}", response.headers());
+
     let response_json = response.text().await?;
 
     if dump {
